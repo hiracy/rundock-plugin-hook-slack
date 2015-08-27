@@ -1,0 +1,5 @@
+my_slack_channel:
+  hook_type: slack
+  token: <SLACK_TOKEN>
+  channel: rundock
+  username: rundock-bot
