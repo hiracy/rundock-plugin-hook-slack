@@ -1,6 +1,8 @@
 # Rundock::Plugin::Hook::Slack
 [![Gem Version](https://badge.fury.io/rb/rundock-plugin-hook-slack.svg)](http://badge.fury.io/rb/rundock-plugin-hook-slack)
-#[![Circle CI](https://circleci.com/gh/hiracy/rundock-plugin-hook-slack/tree/master.png?style=shield)](https://circleci.com/gh/hiracy/rundock-plugin-hook-slack/tree/master)
+<!--
+[![Circle CI](https://circleci.com/gh/hiracy/rundock-plugin-hook-slack/tree/master.png?style=shield)](https://circleci.com/gh/hiracy/rundock-plugin-hook-slack/tree/master)
+-->
 
 [Rundock](https://github.com/hiracy/rundock) plugin for [slack API](https://api.slack.com/) hook.
 
