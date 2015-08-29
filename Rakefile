@@ -1,6 +1,6 @@
 require 'bundler/gem_tasks'
 
-TOKEN_FILE = '~/.rundock/slack.token'
+TOKEN_FILE = "#{Dir.home}/.rundock/slack.token"
 
 task :default => [:spec]
 
@@ -11,16 +11,20 @@ desc 'Setup environments'
 
 task :setup do
   Bundler.with_clean_env do
-    exit unless FileTest.exist?(TOKEN_FILE)
+    unless FileTest.exist?(TOKEN_FILE)
+      puts "#{TOKEN_FILE} not found."
+      exit
+    end
     token = File.read(TOKEN_FILE)
-    system "sed -i -e 's/<SLACK_TOKEN>/#{token}/g' ./spec/integration/scenario.yml"
+    src = File.read('./spec/integration/hooks.yml')
+    File.write("#{Dir.home}/.rundock/rundock-plugin-hook-slack-hooks.yml", src.gsub(/<SLACK_TOKEN>/, token.strip))
   end
 end
 
 desc "Run rundock-slack plugin"
 
 task :rundock do
-  cmd = "bundle exec rundock do ./spec/integration/scenario.yml -k ./spec/integration/hooks.yml -l"
+  cmd = "bundle exec rundock do ./spec/integration/scenario.yml -k #{Dir.home}/.rundock/rundock-plugin-hook-slack-hooks.yml -l debug"
   puts "[EXEC: ] #{cmd}"
   system cmd
 end
