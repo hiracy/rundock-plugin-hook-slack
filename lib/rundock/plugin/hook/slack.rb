@@ -16,7 +16,7 @@ module Rundock
 
         out_msg = ''
         log_buffer.each do |log|
-          out_msg += log.formatted_message + "\n"
+          out_msg += log.formatted_message
         end
 
         Logger.debug("post args: #{post_args.to_s}")
